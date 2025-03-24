@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET 2025 Biology Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #27ae60;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function saveCheckboxState() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox, index) => {
+                localStorage.setItem(`bioCheckbox_${index}`, checkbox.checked);
+            });
+            updateProgress();
+        }
+
+        function loadCheckboxState() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.checked = localStorage.getItem(`bioCheckbox_${index}`) === 'true';
+            });
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            let totalCount = checkboxes.length;
+            let progressPercentage = Math.round((checkedCount / totalCount) * 100);
+            let progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = progressPercentage + '%';
+            progressBar.innerText = progressPercentage + '%';
+        }
+
+        window.onload = function () {
+            loadCheckboxState();
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', saveCheckboxState);
+            });
+        };
+    </script>
+</head>
+<body>
+    <h2>NEET 2025 Biology Checklist</h2>
+    <div class="progress-container">
+        <div class="progress-bar">0%</div>
+    </div>
+
+    <h3>Class 11 Biology Syllabus</h3>
+    
+    <h4>Unit 1: Diversity of the Living World</h4>
+    <ul>
+        <li><input type="checkbox"> The Living World</li>
+        <li><input type="checkbox"> Biological Classification</li>
+        <li><input type="checkbox"> Plant Kingdom</li>
+        <li><input type="checkbox"> Animal Kingdom</li>
+    </ul>
+
+    <h4>Unit 2: Structural Organisation in Animals and Plants</h4>
+    <ul>
+        <li><input type="checkbox"> Morphology of Flowering Plants</li>
+        <li><input type="checkbox"> Anatomy of Flowering Plants</li>
+        <li><input type="checkbox"> Structural Organisation in Animals</li>
+    </ul>
+
+    <h4>Unit 3: Cell Structure and Function</h4>
+    <ul>
+        <li><input type="checkbox"> Cell The Unit of Life</li>
+        <li><input type="checkbox"> Biomolecules</li>
+        <li><input type="checkbox"> Cell Cycle and Cell Division</li>
+    </ul>
+
+    <h4>Unit 4: Plant Physiology</h4>
+    <ul>
+        <li><input type="checkbox"> Transport in Plants</li>
+        <li><input type="checkbox"> Mineral Nutrition</li>
+        <li><input type="checkbox"> Photosynthesis in Higher Plants</li>
+        <li><input type="checkbox"> Respiration in Plants</li>
+        <li><input type="checkbox"> Plant Growth and Development</li>
+    </ul>
+
+    <h4>Unit 5: Human Physiology</h4>
+    <ul>
+        <li><input type="checkbox"> Digestion and Absorption</li>
+        <li><input type="checkbox"> Breathing and Exchange of Gases</li>
+        <li><input type="checkbox"> Body Fluids and Circulation</li>
+        <li><input type="checkbox"> Excretory Products and Their Elimination</li>
+        <li><input type="checkbox"> Locomotion and Movement</li>
+        <li><input type="checkbox"> Neural Control and Coordination</li>
+        <li><input type="checkbox"> Chemical Coordination and Integration</li>
+    </ul>
+
+    <h3>Class 12 Biology Syllabus</h3>
+
+    <h4>Unit 6: Reproduction</h4>
+    <ul>
+        <li><input type="checkbox"> Reproduction in Organisms</li>
+        <li><input type="checkbox"> Sexual Reproduction in Flowering Plants</li>
+        <li><input type="checkbox"> Human Reproduction</li>
+        <li><input type="checkbox"> Reproductive Health</li>
+    </ul>
+
+    <h4>Unit 7: Genetics and Evolution</h4>
+    <ul>
+        <li><input type="checkbox"> Principles of Inheritance and Variation</li>
+        <li><input type="checkbox"> Molecular Basis of Inheritance</li>
+        <li><input type="checkbox"> Evolution</li>
+    </ul>
+
+    <h4>Unit 8: Biology and Human Welfare</h4>
+    <ul>
+        <li><input type="checkbox"> Human Health and Disease</li>
+        <li><input type="checkbox"> Strategies for Enhancement in Food Production</li>
+    </ul>
+
+    <h4>Unit 9: Biotechnology and Its Applications</h4>
+    <ul>
+        <li><input type="checkbox"> Biotechnology: Principles and Processes</li>
+        <li><input type="checkbox"> Biotechnology and Its Applications</li>
+    </ul>
+
+    <h4>Unit 10: Ecology and Environment</h4>
+    <ul>
+        <li><input type="checkbox"> Organisms and Populations</li>
+        <li><input type="checkbox"> Ecosystem</li>
+        <li><input type="checkbox"> Biodiversity and Conservation</li>
+        <li><input type="checkbox"> Environmental Issues</li>
+    </ul>
+
+    <button onclick="window.location.href='physics.html'">Physics</button>
+    <button onclick="window.location.href='chemistry.html'">Chemistry</button>
+</body>
+</html>

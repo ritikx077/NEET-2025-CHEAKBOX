@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET 2025 Physics Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2, h3, h4 {
+            color: #2c3e50;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 20px;
+            width: 0%;
+            background-color: #3498db;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function saveCheckboxState() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox, index) => {
+                localStorage.setItem(`physicsCheckbox_${index}`, checkbox.checked);
+            });
+            updateProgress();
+        }
+
+        function loadCheckboxState() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.checked = localStorage.getItem(`physicsCheckbox_${index}`) === 'true';
+            });
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            let checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            let totalCount = checkboxes.length;
+            let progressPercentage = Math.round((checkedCount / totalCount) * 100);
+            let progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = progressPercentage + '%';
+            progressBar.innerText = progressPercentage + '%';
+        }
+
+        window.onload = function () {
+            loadCheckboxState();
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', saveCheckboxState);
+            });
+        };
+    </script>
+</head>
+<body>
+    <h2>NEET 2025 Physics Checklist</h2>
+    <div class="progress-container">
+        <div class="progress-bar">0%</div>
+    </div>
+    
+    <h3>Class 11 Physics</h3>
+    <ul>
+        <li><input type="checkbox"> Physical World</li>
+        <li><input type="checkbox"> Units and Measurements</li>
+        <li><input type="checkbox"> Motion in a Straight Line</li>
+        <li><input type="checkbox"> Motion in a Plane</li>
+        <li><input type="checkbox"> Laws of Motion</li>
+        <li><input type="checkbox"> Work, Energy and Power</li>
+        <li><input type="checkbox"> System of Particles and Rotational Motion</li>
+        <li><input type="checkbox"> Gravitation</li>
+        <li><input type="checkbox"> Mechanical Properties of Solids</li>
+        <li><input type="checkbox"> Mechanical Properties of Fluids</li>
+        <li><input type="checkbox"> Thermal Properties of Matter</li>
+        <li><input type="checkbox"> Thermodynamics</li>
+        <li><input type="checkbox"> Behaviour of Perfect Gas and Kinetic Theory</li>
+        <li><input type="checkbox"> Oscillations and Waves</li>
+    </ul>
+    
+    <h3>Class 12 Physics</h3>
+    <ul>
+        <li><input type="checkbox"> Electric Charges and Fields</li>
+        <li><input type="checkbox"> Electrostatic Potential and Capacitance</li>
+        <li><input type="checkbox"> Current Electricity</li>
+        <li><input type="checkbox"> Moving Charges and Magnetism</li>
+        <li><input type="checkbox"> Magnetism and Matter</li>
+        <li><input type="checkbox"> Electromagnetic Induction</li>
+        <li><input type="checkbox"> Alternating Current</li>
+        <li><input type="checkbox"> Electromagnetic Waves</li>
+        <li><input type="checkbox"> Ray Optics and Optical Instruments</li>
+        <li><input type="checkbox"> Wave Optics</li>
+        <li><input type="checkbox"> Dual Nature of Radiation and Matter</li>
+        <li><input type="checkbox"> Atoms</li>
+        <li><input type="checkbox"> Nuclei</li>
+        <li><input type="checkbox"> Semiconductor Electronics</li>
+    </ul>
+    
+    <button onclick="window.location.href='chemistry.html'">Chemistry</button>
+    <button onclick="window.location.href='biology.html'">Biology</button>
+</body>
+</html>
